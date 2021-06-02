@@ -1,0 +1,18 @@
+{
+  "name": "Zoom Video SDK Sample Signature Node.js",
+  "description": "Genrerate a signature to Start and Join Sessions with the Zoom Video SDK.",
+  "repository": "https://github.com/zoom/videosdk-sample-signature-node.js",
+  "logo": "https://avatars1.githubusercontent.com/u/29114944?s=200&v=4",
+  "keywords": ["zoom", "videosdk", "signature", "node.js", "express"],
+  "env": {
+    "ZOOM_VIDEO_SDK_KEY": {
+      "description": "Your Zoom Video SDK Key, found on your Zoom Video SDK App's Credentials page",
+      "value": "",
+      "required": true
+    },
+    "ZOOM_VIDEO_SDK_SECRET": {
+      "description": "Your Zoom Video SDK Secret, found on your Zoom Video SDK App's Credentials page",
+      "value": "",
+      "required": true
+    }
+  }
