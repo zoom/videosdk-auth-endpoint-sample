@@ -4,7 +4,7 @@
 
 Use of this sample app is subject to our [Terms of Use](https://zoom.us/docs/en-us/zoom_api_license_and_tou.html).
 
-This is a Node.js / Express server that generates a [Video SDK signature](https://marketplace.zoom.us/docs/sdk/video/web/build/signature) via an http request from your frontend for use in the Video SDK.
+This is a Node.js / Express server that generates a [Video SDK signature](https://marketplace.zoom.us/docs/sdk/video/web/build/signature) via an http request from your frontend for use in the [Zoom Video SDK](https://marketplace.zoom.us/docs/sdk/video/web).
 
 If you would like to skip these steps and just deploy the finished code to Heroku, click the Deploy to Heroku button. (You will still need to configure a few simple things, so skip to [Deployment](#deployment).)
 
@@ -49,7 +49,7 @@ Make a POST request to `http://localhost:4000` (or your deployed url) with the f
 
 | Body                   | Description |
 | -----------------------|-------------|
-| sessionName          | A Session Name of your choice. |
+| sessionName          | Session Name of your choice. |
 | sessionPasscode                   |  Session Passcode of your choice. |
 
 ### Example Request
