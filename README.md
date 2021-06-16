@@ -1,5 +1,3 @@
-<!-- NEEDS TO BE UPDATED FOR VIDO SDK -->
-
 # Zoom Video SDK Sample Signature Node.js
 
 Use of this sample app is subject to our [Terms of Use](https://zoom.us/docs/en-us/zoom_api_license_and_tou.html).
@@ -34,7 +32,7 @@ In terminal, run the following command to clone the repo:
 
    ```
    ZOOM_VIDEO_SDK_KEY=VIDEO_SDK_KEY_HERE
-   ZOOM_VIDO_SDK_SECRET=VIDEO_SDK_SECRET_HERE
+   ZOOM_VIDEO_SDK_SECRET=VIDEO_SDK_SECRET_HERE
    ```
 
 1. Save and close `.env`.
@@ -95,7 +93,7 @@ client.join(
 If you used the Deploy to Heroku button, enter a name for your app on the page the button took you to (or leave it blank to have a name generated for you), and fill in the values for these,
 
 - `ZOOM_VIDEO_SDK_KEY` (Your Zoom Video SDK Key, found on your Zoom Video SDK App's Credentials page)
-- `ZOOM_VIDO_SDK_SECRET` (Your Zoom Video SDK Secret, found on your Zoom Video SDK App's Credentials page)
+- `ZOOM_VIDEO_SDK_SECRET` (Your Zoom Video SDK Secret, found on your Zoom Video SDK App's Credentials page)
 
 Then click "Deploy App".
 
@@ -122,7 +120,7 @@ If you cloned this repo, use the [Heroku CLI](https://devcenter.heroku.com/artic
 1. Navigate to your app on the Heroku dashboard, click settings, and add your Video SDK App's Credentials in the Config Variables,
 
    - `ZOOM_VIDEO_SDK_KEY` (Your Zoom Video SDK Key, found on your Zoom Video SDK App's Credentials page)
-   - `ZOOM_VIDO_SDK_SECRET` (Your Zoom Video SDK Secret, found on your Zoom Video SDK App's Credentials page)
+   - `ZOOM_VIDEO_SDK_SECRET` (Your Zoom Video SDK Secret, found on your Zoom Video SDK App's Credentials page)
 
 Now you can generate and [use your signature](#usage) via the deployed url Heroku provides.
 
