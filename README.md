@@ -45,10 +45,12 @@ In terminal, run the following command to clone the repo:
 
 Make a POST request to `http://localhost:4000` (or your deployed url) with the following request body:
 
-| Body                   | Description |
-| -----------------------|-------------|
-| sessionName          | Session Name of your choice. |
-| sessionPasscode                   |  Session Passcode of your choice. |
+| Key                   | Value Description |
+| ----------------------|-------------|
+| sessionName           | Required, a session name of your choice. |
+| role                  | Optional, `0` to specify participant, `1` to specify host. If the role is not set, the first person who joins will be the host. Everyone else will be a participant. If the role is set, the host must join before the participants. |
+| sessionKey           | Required if set with the host. A key you can provide to identify your sessions. This value will show up in the [Video SDK APIs](https://marketplace.zoom.us/docs/api-reference/video-sdk/methods#operation/sessions) and Dashboard. If set with the host, the sessionKey needs to match for all participants.  |
+| userIdentity          | Optional, an identifier you can provide to identify your users. This value will show up in the [Video SDK APIs](https://marketplace.zoom.us/docs/api-reference/video-sdk/methods#operation/sessionUsers) and Dashboard.                   |
 
 ### Example Request
 
@@ -59,7 +61,9 @@ Request Body:
 ```json
 {
   "sessionName": "Cool Cars",
-  "sessionPasscode": "Ilovecars!"
+  "role": 1,
+  "sessionKey": "session123",
+  "userIdentity": "user123"
 }
 ```
 
@@ -67,7 +71,7 @@ If successful, the response body will be a JSON representation of your signature
 
 ```json
 {
-  "signature": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9eyJhcHBfa2V5IjoiQVBJS0VZSEVSRSIsImlhdCI6MTYyMDI0NzE2OSwiZXhwIjoxNjIwMjU0MzY5LCJ0cGMiOiJDb29sIENhcnMiLCJwd2QiOiJJbG92ZWNhcnMhIn0="
+  "signature": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfa2V5IjoiVklERU9fU0RLX0tFWSIsImlhdCI6MTY0NjI0ODc5NiwiZXhwIjoxNjQ2MjU1OTk2LCJ0cGMiOiJDb29sIENhcnMiLCJ1c2VyX2lkZW50aXR5IjoidXNlcjEyMyIsInNlc3Npb25fa2V5Ijoic2Vzc2lvbjEyMyIsInJvbGVfdHlwZSI6MH0.Y6C65mZUxTZFeGiOI6oW5q2UkIXe3nLTK0MVNkfiJ9c"
 }
 ```
 
