@@ -24,6 +24,7 @@ app.post('/', (req, res) => {
     role_type: req.body.role,
     user_identity: req.body.userIdentity,
     session_key: req.body.sessionKey,
+    version: 1,
     iat: iat,
     exp: exp
   }
