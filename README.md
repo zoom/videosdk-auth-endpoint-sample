@@ -1,6 +1,6 @@
 # Zoom Video SDK Sample Signature Node.js
 
-Use of this sample app is subject to our [Terms of Use](https://zoom.us/docs/en-us/zoom_api_license_and_tou.html).
+Use of this sample app is subject to our [Terms of Use](https://explore.zoom.us/en/video-sdk-terms).
 
 This is a Node.js / Express server that generates a [Video SDK signature](https://marketplace.zoom.us/docs/sdk/video/web/build/signature) via an http request from your frontend for use in the [Zoom Video SDK](https://marketplace.zoom.us/docs/sdk/video/web).
 
