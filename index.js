@@ -24,6 +24,9 @@ app.post('/', (req, res) => {
     role_type: req.body.role,
     user_identity: req.body.userIdentity,
     session_key: req.body.sessionKey,
+    geo_regions: req.body.geoRegions,
+    cloud_recording_option: req.body.cloudRecordingOption,
+    cloud_recording_election: req.body.cloudRecordingElection,
     version: 1,
     iat: iat,
     exp: exp
@@ -38,4 +41,4 @@ app.post('/', (req, res) => {
   })
 })
 
-app.listen(port, () => console.log(`Zoom Video SDK Sample Signature Node.js on port ${port}!`))
+app.listen(port, () => console.log(`Zoom Video SDK Auth Endpoint Sample Node.js listening on port ${port}!`))

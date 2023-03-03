@@ -1,13 +1,18 @@
 {
   "name": "videosdk-sample-signature-node.js",
   "version": "1.0.0",
-  "description": "Genrerate a signature to Start and Join Sessions with the Zoom Video SDK.",
+  "description": "Generate a Video SDK JWT to join Zoom Video SDK sessions with the Video SDK.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
   },
-  "author": "Tommy Gaessler",
+  "author": "Zoom Video Communications, Inc.",
+  "contributors": [
+    {
+      "name": "Tommy Gaessler"
+    }
+  ],
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.20.1",
