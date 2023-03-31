@@ -1,5 +1,5 @@
 {
-  "name": "videosdk-sample-signature-node.js",
+  "name": "videosdk-auth-endpoint-sample",
   "version": "1.0.0",
   "description": "Generate a Video SDK JWT to join Zoom Video SDK sessions with the Video SDK.",
   "main": "index.js",

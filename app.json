@@ -1,9 +1,9 @@
 {
-  "name": "Zoom Video SDK Auth Endpoint Sample Node.js",
+  "name": "Zoom Video SDK Auth Endpoint sample",
   "description": "Generate a Video SDK JWT to join Zoom Video SDK sessions with the Video SDK.",
-  "repository": "https://github.com/zoom/videosdk-sample-signature-node.js",
+  "repository": "https://github.com/zoom/videosdk-auth-endpoint-sample",
   "logo": "https://avatars1.githubusercontent.com/u/29114944?s=200&v=4",
-  "keywords": ["zoom", "videosdk", "signature", "node.js", "express"],
+  "keywords": ["zoom", "videosdk", "jwt", "node.js", "express"],
   "env": {
     "ZOOM_VIDEO_SDK_KEY": {
       "description": "Your Zoom Video SDK Key, found on your Zoom Video SDK app's credentials page",

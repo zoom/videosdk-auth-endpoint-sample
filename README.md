@@ -1,8 +1,8 @@
-# Zoom Video SDK Auth Endpoint Sample Node.js
+# Zoom Video SDK Auth Endpoint sample
 
-Use of this sample app is subject to our [Terms of Use](https://explore.zoom.us/en/video-sdk-terms).
+Use of this sample app is subject to our [Terms of Use](https://explore.zoom.us/en/video-sdk-terms/).
 
-This is a Node.js / Express server that generates a [Video SDK JWT](https://marketplace.zoom.us/docs/sdk/video/auth/) via an http request for authorized use of the [Zoom Video SDK](https://marketplace.zoom.us/docs/sdk/video/introduction/).
+This is a Node.js / Express server that generates a [Video SDK JWT](https://developers.zoom.us/docs/video-sdk/auth/#generate-a-video-sdk-jwt) via an http request for authorized use of the [Zoom Video SDK](https://developers.zoom.us/docs/video-sdk/).
 
 If you would like to skip these steps and just deploy the finished code to Heroku, click the Deploy to Heroku button. (You will still need to configure a few simple things, so skip to [Deployment](#deployment).)
 
@@ -12,13 +12,13 @@ If you would like to skip these steps and just deploy the finished code to Herok
 
 In terminal, run the following command to clone the repo:
 
-`$ git clone https://github.com/zoom/videosdk-sample-signature-node.js.git`
+`$ git clone https://github.com/zoom/videosdk-auth-endpoint-sample.git`
 
 ## Setup
 
 1. In terminal, cd into the cloned repo:
 
-   `$ cd videosdk-sample-signature-node.js`
+   `$ cd videosdk-auth-endpoint-sample`
 
 1. Then install the dependencies:
 
@@ -49,10 +49,10 @@ Make a POST request to `http://localhost:4000` (or your deployed url) with the f
 | ----------------------|-------------|
 | sessionName           | Required, a session name of your choice. |
 | role                  | Optional, `0` to specify participant, `1` to specify host. If the role is not set, the first person who joins will be the host. Everyone else will be a participant. If the role is set, the host must join before the participants. |
-| sessionKey           | Required if set with the host. A key you can provide to identify your sessions. This value will show up in the [Video SDK APIs](https://marketplace.zoom.us/docs/api-reference/video-sdk/methods#operation/sessions) and Dashboard. If set with the host, the sessionKey needs to match for all participants.  |
-| userIdentity          | Optional, an identifier you can provide to identify your users. This value will show up in the [Video SDK APIs](https://marketplace.zoom.us/docs/api-reference/video-sdk/methods#operation/sessionUsers) and Dashboard.                   |
-| geoRegions          | Optional, the data center connection preference for the user joining the session. The data center/s you specify must also be enabled on your [account](https://zoom.us/account). Comma seperated string of the following supported geo regions `US`, `AU`, `CA`, `IN`, `CN`, `BR`, `MX`, `HK`, `SG`, `JP`, `DE`, `NL`. [Abreviation reference here](https://marketplace.zoom.us/docs/api-reference/other-references/abbreviation-lists/#countries).                   |
-| cloudRecordingOption          | Optional, `0` for a cloud recording file with user videos combined into one, default.<br>`1` for separate cloud recording video files for each user. [Contact Sales to enable](https://explore.zoom.us/en/video-sdk/#sf_form). Can only be set by the host (`role_type` of `1`).                   |
+| sessionKey           | Required if set with the host. A key you can provide to identify your sessions. This value will show up in the [Video SDK APIs](https://developers.zoom.us/docs/api/rest/reference/video-sdk/methods/#operation/sessions) and Dashboard. If set with the host, the sessionKey needs to match for all participants.  |
+| userIdentity          | Optional, an identifier you can provide to identify your users. This value will show up in the [Video SDK APIs](https://developers.zoom.us/docs/api/rest/reference/video-sdk/methods/#operation/sessionUsers) and Dashboard.                   |
+| geoRegions          | Optional, the data center connection preference for the user joining the session. The data center/s you specify must also be enabled on your [account](https://zoom.us/account). Comma seperated string of the following supported geo regions `US`, `AU`, `CA`, `IN`, `CN`, `BR`, `MX`, `HK`, `SG`, `JP`, `DE`, `NL`. [Abreviation reference here](https://developers.zoom.us/docs/api/rest/other-references/abbreviation-lists/#countries).                   |
+| cloudRecordingOption          | Optional, `0` for a cloud recording file with user videos combined into one, default.<br>`1` for separate cloud recording video files for each user. [Contact Sales to enable](https://explore.zoom.us/en/video-sdk/). Can only be set by the host (`role_type` of `1`).                   |
 | cloudRecordingElection          | Optional, `1` to record this user's self view, default.<br>`0` to not record this user's self view.                   |
 
 ### Example Request
@@ -78,7 +78,7 @@ If successful, the response body will be a JSON representation of your signature
 }
 ```
 
-In the [Video SDK](https://marketplace.zoom.us/docs/sdk/video/introduction/), pass in the `signature` to the `join()` function:
+In the [Video SDK](https://developers.zoom.us/docs/video-sdk/auth/#start-and-join-sessions-with-the-video-sdk-jwt), pass in the `signature` to the `join()` function:
 
 ```js
 // Make http request to your auth endpoint to get the Video SDK JWT
@@ -89,12 +89,8 @@ client.join(
    signature: signature,
    topic: sessionName,
    userName: userName,
-   password: sessionPasscode,
-).then((data) => {
-   console.log(data)
-}).catch((error) => {
-   console.log(error)
-})
+   password: sessionPasscode
+)
 ```
 
 ## Deployment
@@ -135,4 +131,4 @@ Now you can generate [your Video SDK JWT](#usage) via the deployed url Heroku pr
 
 ## Need help?
 
-If you're looking for help, try [Developer Support](https://devsupport.zoom.us)   or our [Developer Forum](https://devforum.zoom.us). Priority support is also available with [Premier Developer Support](https://zoom.us/docs/en-us/developer-support-plans.html) plans.
+If you're looking for help, try [Developer Support](https://devsupport.zoom.us)   or our [Developer Forum](https://devforum.zoom.us). Priority support is also available with [Premier Developer Support](https://explore.zoom.us/docs/en-us/developer-support-plans.html) plans.
