@@ -126,8 +126,12 @@ If you cloned this repo, use the [Heroku CLI](https://devcenter.heroku.com/artic
 
    - `ZOOM_VIDEO_SDK_KEY` (Your Zoom Video SDK Key, found on your Zoom Video SDK App's Credentials page)
    - `ZOOM_VIDEO_SDK_SECRET` (Your Zoom Video SDK Secret, found on your Zoom Video SDK App's Credentials page)
+   
+### Other Server Hosting
 
-Now you can generate [your Video SDK JWT](#usage) via the deployed url Heroku provides.
+For Other Server Hosting information, see [this tutorial](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/deployment#choosing_a_hosting_provider).
+
+Now you can [generate your Video SDK JWT](#usage) via the deployed url Heroku provides.
 
 ## Need help?
 
