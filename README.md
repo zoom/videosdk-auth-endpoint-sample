@@ -28,7 +28,7 @@ In terminal, run the following command to clone the repo:
 
    `$ touch .env`
 
-1. Add the following code to the `.env` file, and insert your Video SDK Apps's Key and Secret found on the App Credentials page in the Zoom App Marketplace.:
+1. Add the following code to the `.env` file, and insert your [Zoom Video SDK credentials](https://developers.zoom.us/docs/video-sdk/developer-accounts/#get-video-sdk-credentials):
 
    ```
    ZOOM_VIDEO_SDK_KEY=VIDEO_SDK_KEY_HERE
@@ -95,43 +95,36 @@ client.join(
 
 ## Deployment
 
-If you used the Deploy to Heroku button, enter a name for your app on the page the button took you to (or leave it blank to have a name generated for you), and fill in the values for these,
+### Heroku (button)
 
-- `ZOOM_VIDEO_SDK_KEY` (Your Zoom Video SDK Key, found on your Zoom Video SDK App's Credentials page)
-- `ZOOM_VIDEO_SDK_SECRET` (Your Zoom Video SDK Secret, found on your Zoom Video SDK App's Credentials page)
-
-Then click "Deploy App".
-
-Now you can generate [your Video SDK JWT](#usage) via the deployed url Heroku provides.
-
-If you cloned this repo, use the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) to deploy your server.
-
-1. In terminal, create a Heroku app:
-
-   `$ heroku create`
-
-1. Add your files:
-
-   `$ git add -A`
-
-1. Commit your files:
-
-   `$ git commit -m "deploying to heroku"`
-
-1. Deploy your server by pushing your files to Heroku:
-
-   `$ git push origin heroku`
-
-1. Navigate to your app on the Heroku dashboard, click settings, and add your Video SDK App's Credentials in the Config Variables,
+1. After clicking the "Deploy to Heroku" button, enter a name for your app (or leave it blank to have a name generated for you), and insert your [Zoom Video SDK credentials](https://developers.zoom.us/docs/video-sdk/developer-accounts/#get-video-sdk-credentials):
 
    - `ZOOM_VIDEO_SDK_KEY` (Your Zoom Video SDK Key, found on your Zoom Video SDK App's Credentials page)
    - `ZOOM_VIDEO_SDK_SECRET` (Your Zoom Video SDK Secret, found on your Zoom Video SDK App's Credentials page)
+
+1. Then click "Deploy App".
+
+1. Use your Heroku URL as your Video SDK Auth Endpoint.
+
+   Example: `https://abc123.herokuapp.com/`
+
+### Heroku (CLI)
+
+1. If you cloned this repo, you may use the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) to deploy your server. Remember to [set your config vars (envoirnment variables)](https://devcenter.heroku.com/articles/config-vars).
+
+1. Use your Heroku URL as your Video SDK Auth Endpoint.
+
+   Example: `https://abc123.herokuapp.com/`
    
 ### Other Server Hosting
 
-For Other Server Hosting information, see [this tutorial](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/deployment#choosing_a_hosting_provider).
+1. For Other Server Hosting information, see [this tutorial](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/deployment#choosing_a_hosting_provider).
 
-Now you can [generate your Video SDK JWT](#usage) via the deployed url Heroku provides.
+1. Use your deployed URL as your Video SDK Auth Endpoint.
+
+   Example: `https://abc123.compute-1.amazonaws.com/`
+
+Now you can [generate your Video SDK JWT](#usage).
 
 ## Need help?
 
