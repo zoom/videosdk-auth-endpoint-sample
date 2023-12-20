@@ -12,8 +12,7 @@ app.use(bodyParser.json(), cors())
 app.options('*', cors())
 
 app.post('/', (req, res) => {
-
-  const iat = Math.round(new Date().getTime() / 1000) - 30;
+  const iat = Math.round(new Date().getTime() / 1000) - 30
   const exp = iat + 60 * 60 * 2
 
   const oHeader = { alg: 'HS256', typ: 'JWT' }
@@ -41,4 +40,6 @@ app.post('/', (req, res) => {
   })
 })
 
-app.listen(port, () => console.log(`Zoom Video SDK Auth Endpoint Sample Node.js listening on port ${port}!`))
+app.listen(port, () =>
+  console.log(`Zoom Video SDK Auth Endpoint Sample Node.js listening on port ${port}!`)
+)

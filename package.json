@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node index.js",
+    "prepare": "husky install",
+    "format": "prettier --write *.js"
   },
   "author": "Zoom Video Communications, Inc.",
   "contributors": [
@@ -20,5 +22,9 @@
     "dotenv": "^8.2.0",
     "express": "^4.18.2",
     "jsrsasign": "^10.5.25"
+  },
+  "devDependencies": {
+    "husky": "^8.0.0",
+    "prettier": "^3.1.1"
   }
 }
