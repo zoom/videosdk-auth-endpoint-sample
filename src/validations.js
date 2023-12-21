@@ -22,7 +22,7 @@ export const inNumberArray = (allowedNumbers) => (property, value) => {
 export const isBetween = (min, max) => (property, value) => {
   if (typeof value === 'undefined') return
 
-  if (typeof value !== 'number' && isNaN(value)) {
+  if (typeof value !== 'number' || isNaN(value)) {
     return {
       property,
       reason: `Value ${value} not allowed, must be of type number`
