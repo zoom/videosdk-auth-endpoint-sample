@@ -24,7 +24,7 @@ app.options('*', cors())
 const validator = {
   role: [isRequired, inNumberArray([0, 1])],
   sessionName: [isRequired, isLengthLessThan(200)],
-  expirationSeconds: [isRequired, isBetween(1800, 172800)],
+  expirationSeconds: isBetween(1800, 172800),
   userIdentity: isLengthLessThan(35),
   sessionKey: isLengthLessThan(36),
   geoRegions: matchesStringArray(['AU', 'BR', 'CA', 'CN', 'DE', 'HK', 'IN', 'JP', 'MX', 'NL', 'SG', 'US']),
@@ -62,7 +62,7 @@ app.post('/', (req, res) => {
   } = requestBody
 
   const iat = Math.floor(Date.now() / 1000)
-  const exp = iat + expirationSeconds
+  const exp = expirationSeconds ? iat + expirationSeconds : iat + 2 * 60 * 60
 
   return res.json({
     signature: KJUR.jws.JWS.sign(
