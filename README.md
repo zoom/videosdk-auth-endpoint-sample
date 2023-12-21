@@ -2,7 +2,7 @@
 
 Use of this sample app is subject to our [Terms of Use](https://explore.zoom.us/en/video-sdk-terms/).
 
-This is a Node.js / Express server that generates a [Video SDK JWT](https://developers.zoom.us/docs/video-sdk/auth/#generate-a-video-sdk-jwt) via an http request for authorized use of the [Zoom Video SDK](https://developers.zoom.us/docs/video-sdk/).
+This is a Node.js / Express server that generates a [Video SDK JWT](https://developers.zoom.us/docs/video-sdk/auth/#generate-a-video-sdk-jwt) via an HTTP request for authorized use of the [Zoom Video SDK](https://developers.zoom.us/docs/video-sdk/).
 
 If you would like to skip these steps and just deploy the finished code to Heroku, click the Deploy to Heroku button. (You will still need to configure a few simple things, so skip to [Deployment](#deployment).)
 
@@ -10,34 +10,23 @@ If you would like to skip these steps and just deploy the finished code to Herok
 
 ## Installation
 
-In terminal, run the following command to clone the repo:
+In terminal, run the following command to clone the repository:
 
 `$ git clone https://github.com/zoom/videosdk-auth-endpoint-sample.git`
 
 ## Setup
 
-1. In terminal, cd into the cloned repo:
+1. In terminal, `cd` into the cloned repository:
 
    `$ cd videosdk-auth-endpoint-sample`
 
-1. Then install the dependencies:
+2. Then install the dependencies:
 
    `$ npm install`
 
-1. Create an environment file to store your Video SDK credentials:
+3. Rename `.env.example` to `.env`, edit the file contents to include your [Zoom Video SDK key and secret](https://developers.zoom.us/docs/video-sdk/get-credentials/), save the file contents, and close the file:
 
-   `$ touch .env`
-
-1. Add the following code to the `.env` file, and insert your [Zoom Video SDK credentials](https://developers.zoom.us/docs/video-sdk/developer-accounts/#get-video-sdk-credentials):
-
-   ```
-   ZOOM_VIDEO_SDK_KEY=VIDEO_SDK_KEY_HERE
-   ZOOM_VIDEO_SDK_SECRET=VIDEO_SDK_SECRET_HERE
-   ```
-
-1. Save and close `.env`.
-
-1. Start the server:
+4. Start the server:
 
    `$ npm run start`
 
@@ -45,15 +34,19 @@ In terminal, run the following command to clone the repo:
 
 Make a POST request to `http://localhost:4000` (or your deployed url) with the following request body:
 
-| Key                   | Value Description |
-| ----------------------|-------------|
-| sessionName           | Required, a session name of your choice. |
-| role                  | Optional, `0` to specify participant, `1` to specify host. If the role is not set, the first person who joins will be the host. Everyone else will be a participant. If the role is set, the host must join before the participants. |
-| sessionKey           | Required if set with the host. A key you can provide to identify your sessions. This value will show up in the [Video SDK APIs](https://developers.zoom.us/docs/api/rest/reference/video-sdk/methods/#operation/sessions) and Dashboard. If set with the host, the sessionKey needs to match for all participants.  |
-| userIdentity          | Optional, an identifier you can provide to identify your users. This value will show up in the [Video SDK APIs](https://developers.zoom.us/docs/api/rest/reference/video-sdk/methods/#operation/sessionUsers) and Dashboard.                   |
-| geoRegions          | Optional, the data center connection preference for the user joining the session. The data center/s you specify must also be enabled on your [account](https://zoom.us/account). Comma seperated string of the following supported geo regions `US`, `AU`, `CA`, `IN`, `CN`, `BR`, `MX`, `HK`, `SG`, `JP`, `DE`, `NL`. [Abreviation reference here](https://developers.zoom.us/docs/api/rest/other-references/abbreviation-lists/#countries).                   |
-| cloudRecordingOption          | Optional, `0` for a cloud recording file with user videos combined into one, default.<br>`1` for separate cloud recording video files for each user. [Contact Sales to enable](https://explore.zoom.us/en/video-sdk/). Can only be set by the host (`role_type` of `1`).                   |
-| cloudRecordingElection          | Optional, `1` to record this user's self view, default.<br>`0` to not record this user's self view.                   |
+| Property                 | Type                   | Required? | Validation Rule(s)                                                                                            |
+| ------------------------ | ---------------------- | --------- | ------------------------------------------------------------------------------------------------------------- |
+| `sessionName`            | `string`               | **Yes**   | - Required <br> - Value length be fewer than 200 characters                                                   |
+| `role`                   | `number` or `string`   | **Yes**   | - Required <br> - Must be of type `number` or coercible to type `number`† <br> - Must equal `0` or `1`        |
+| `expirationSeconds`      | `number` or `string`   | No        | - Must be between `30` and `2880` minutes                                                                     |
+| `userIdentity`           | `string`               | No        | - Must be fewer than 35 characters                                                                            |
+| `sessionKey`             | `string`               | No        | - Must be fewer than 36 characters                                                                            |
+| `geoRegions`             | `string` or `string[]` | No        | - Must be a comma-separated string with valid Zoom geo regions, or a string array with valid Zoom geo regions |
+| `cloudRecordingOption`   | `number` or `string`   | No        | - Must be of type `number` or coercible to type `number`† <br> - Must equal `0` or `1`                        |
+| `cloudRecordingElection` | `number` or `string`   | No        | - Must be of type `number` or coercible to type `number`† <br> - Must equal `0` or `1`                        |
+| `telemetryTrackingId`    | `string`               | No        | N/A                                                                                                           |
+
+† When providing a value that is identified a "coercible," the JSON value must be of type `number`, or if `string` is provided, it must be coercible/parsable into type `number` via [`parseInt()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt). An error is thrown if value provided is not parsable to type `number`.
 
 ### Example Request
 
@@ -110,7 +103,7 @@ client.join(
 
 ### Heroku (CLI)
 
-1. If you cloned this repo, you may use the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) to deploy your server. Remember to [set your config vars (envoirnment variables)](https://devcenter.heroku.com/articles/config-vars).
+1. If you cloned this repository, you may use the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) to deploy your server. Remember to [set your config vars (envoirnment variables)](https://devcenter.heroku.com/articles/config-vars).
 
 1. Use your Heroku URL as your Video SDK Auth Endpoint.
 
