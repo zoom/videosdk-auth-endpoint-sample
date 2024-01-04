@@ -34,19 +34,18 @@ In terminal, run the following command to clone the repository:
 
 Make a POST request to `http://localhost:4000` (or your deployed url) with the following request body:
 
-| Property                 | Type                   | Required? | Validation Rule(s)                                                                                            |
-| ------------------------ | ---------------------- | --------- | ------------------------------------------------------------------------------------------------------------- |
-| `sessionName`            | `string`               | **Yes**   | - Required <br> - Value length be fewer than 200 characters                                                   |
-| `role`                   | `number` or `string`   | **Yes**   | - Required <br> - Must be of type `number` or coercible to type `number`† <br> - Must equal `0` or `1`        |
-| `expirationSeconds`      | `number` or `string`   | No        | - Must be between `30` and `2880` minutes                                                                     |
-| `userIdentity`           | `string`               | No        | - Must be fewer than 35 characters                                                                            |
-| `sessionKey`             | `string`               | No        | - Must be fewer than 36 characters                                                                            |
-| `geoRegions`             | `string` or `string[]` | No        | - Must be a comma-separated string with valid Zoom geo regions, or a string array with valid Zoom geo regions |
-| `cloudRecordingOption`   | `number` or `string`   | No        | - Must be of type `number` or coercible to type `number`† <br> - Must equal `0` or `1`                        |
-| `cloudRecordingElection` | `number` or `string`   | No        | - Must be of type `number` or coercible to type `number`† <br> - Must equal `0` or `1`                        |
-| `telemetryTrackingId`    | `string`               | No        | N/A                                                                                                           |
+| Property                 | Type     | Required? | Validation Rule(s)                                                    |
+| ------------------------ | -------- | --------- | --------------------------------------------------------------------- |
+| `sessionName`            | `string` | **Yes**   | - Required <br> - Value length be fewer than 200 characters           |
+| `role`                   | `number` | **Yes**   | - Required <br> - Must equal `0` or `1`                               |
+| `expirationSeconds`      | `number` | No        | - Must be between `1800` (30 minutes) and `172800` (48 hours) seconds |
+| `userIdentity`           | `string` | No        | - Must be fewer than 35 characters                                    |
+| `sessionKey`             | `string` | No        | - Must be fewer than 36 characters                                    |
+| `geoRegions`             | `string` | No        | - Must be a comma-separated string with valid Zoom geo regions        |
+| `cloudRecordingOption`   | `number` | No        | - Must equal `0` or `1`                                               |
+| `cloudRecordingElection` | `number` | No        | - Must equal `0` or `1`                                               |
+| `telemetryTrackingId`    | `string` | No        | N/A                                                                   |
 
-† When providing a value that is identified a "coercible," the JSON value must be of type `number`, or if `string` is provided, it must be coercible/parsable into type `number` via [`parseInt()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt). An error is thrown if value provided is not parsable to type `number`.
 
 ### Example Request
 
