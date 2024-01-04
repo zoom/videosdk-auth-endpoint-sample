@@ -62,28 +62,27 @@ app.post('/', (req, res) => {
   } = requestBody
 
   const iat = Math.floor(Date.now() / 1000)
-  const exp = expirationSeconds ? iat + expirationSeconds : iat + 2 * 60 * 60
+  const exp = expirationSeconds ? iat + expirationSeconds : iat + 60 * 60 * 2
+  const oHeader = { alg: 'HS256', typ: 'JWT' }
 
-  return res.json({
-    signature: KJUR.jws.JWS.sign(
-      null,
-      { alg: 'HS256', typ: 'JWT' },
-      JSON.stringify({
-        app_key: process.env.ZOOM_VIDEO_SDK_KEY,
-        role_type: role,
-        tpc: sessionName,
-        version: 1,
-        iat,
-        exp,
-        user_identity: userIdentity,
-        session_key: sessionKey,
-        geo_regions: joinGeoRegions(geoRegions),
-        cloud_recording_option: cloudRecordingOption,
-        cloud_recording_election: cloudRecordingElection
-      }),
-      process.env.ZOOM_VIDEO_SDK_SECRET
-    )
-  })
+  const oPayload = {
+    app_key: process.env.ZOOM_VIDEO_SDK_KEY,
+    role_type: role,
+    tpc: sessionName,
+    version: 1,
+    iat,
+    exp,
+    user_identity: userIdentity,
+    session_key: sessionKey,
+    geo_regions: joinGeoRegions(geoRegions),
+    cloud_recording_option: cloudRecordingOption,
+    cloud_recording_election: cloudRecordingElection
+  }
+
+  const sHeader = JSON.stringify(oHeader)
+  const sPayload = JSON.stringify(oPayload)
+  const sdkJWT = KJUR.jws.JWS.sign('HS256', sHeader, sPayload, process.env.ZOOM_VIDEO_SDK_SECRET)
+  return res.json({ signature: sdkJWT })
 })
 
 app.listen(port, () => console.log(`Zoom Video SDK Auth Endpoint Sample Node.js, listening on port ${port}!`))
