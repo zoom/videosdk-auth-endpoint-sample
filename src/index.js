@@ -29,12 +29,13 @@ const validator = {
   sessionKey: isLengthLessThan(36),
   geoRegions: matchesStringArray(['AU', 'BR', 'CA', 'CN', 'DE', 'HK', 'IN', 'JP', 'MX', 'NL', 'SG', 'US']),
   cloudRecordingOption: inNumberArray([0, 1]),
-  cloudRecordingElection: inNumberArray([0, 1])
+  cloudRecordingElection: inNumberArray([0, 1]),
+  audioCompatibleMode: inNumberArray([0, 1])
 }
 
 const coerceRequestBody = (body) => ({
   ...body,
-  ...['role', 'expirationSeconds', 'cloudRecordingOption', 'cloudRecordingElection'].reduce(
+  ...['role', 'expirationSeconds', 'cloudRecordingOption', 'cloudRecordingElection', 'audioCompatibleMode'].reduce(
     (acc, cur) => ({ ...acc, [cur]: typeof body[cur] === 'string' ? parseInt(body[cur]) : body[cur] }),
     {}
   )
@@ -58,7 +59,8 @@ app.post('/', (req, res) => {
     sessionKey,
     geoRegions,
     cloudRecordingOption,
-    cloudRecordingElection
+    cloudRecordingElection,
+    audioCompatibleMode
   } = requestBody
 
   const iat = Math.floor(Date.now() / 1000)
@@ -76,7 +78,8 @@ app.post('/', (req, res) => {
     session_key: sessionKey,
     geo_regions: joinGeoRegions(geoRegions),
     cloud_recording_option: cloudRecordingOption,
-    cloud_recording_election: cloudRecordingElection
+    cloud_recording_election: cloudRecordingElection,
+    audio_compatible_mode: audioCompatibleMode
   }
 
   const sHeader = JSON.stringify(oHeader)
