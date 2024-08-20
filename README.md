@@ -8,7 +8,7 @@ If you would like to skip these steps and just deploy the finished code to a man
 
 | Railway | Render | Heroku |
 |:-:|:-:|:-:|
-| [![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/dO2hTU?referralCode=HTPdHX) | [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/EkaanshArora/videosdk-auth-endpoint-sample) | [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/zoom/videosdk-auth-endpoint-sample) | 
+| [![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/dO2hTU?referralCode=HTPdHX) | [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/zoom/videosdk-auth-endpoint-sample) | [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/zoom/videosdk-auth-endpoint-sample) | 
 
 > Note: Both Railway and Render have free tiers, but Heroku requires a credit card to deploy.
 
@@ -103,6 +103,10 @@ client.join(
 1. Use your URL as your Video SDK Auth Endpoint.
 
    Example: `https://abc123.provider.com/`
+
+```bash
+$ curl <YOU_URL> -X POST -d '{  "sessionName": "Cool Cars",  "role": "1",  "sessionKey": "session123",  "userIdentity": "user123"}' -H "Content-Type: application/json"
+```
 
 <!-- ### Heroku (CLI)
 
