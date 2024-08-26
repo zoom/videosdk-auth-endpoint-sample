@@ -91,7 +91,7 @@ client.join(
 
 ## Deployment
 
-### Heroku (button)
+### Deploy to a Managed Service
 
 1. After clicking the "Deploy to <Provider\>" button, enter a name for your app (or leave it blank to have a name generated for you), and insert your [Zoom Video SDK credentials](https://developers.zoom.us/docs/video-sdk/get-credentials/):
 
