@@ -4,9 +4,13 @@ Use of this sample app is subject to our [Terms of Use](https://explore.zoom.us/
 
 This is a Node.js / Express server that generates a [Video SDK JWT](https://developers.zoom.us/docs/video-sdk/auth/#generate-a-video-sdk-jwt) via an HTTP request for authorized use of the [Zoom Video SDK](https://developers.zoom.us/docs/video-sdk/).
 
-If you would like to skip these steps and just deploy the finished code to Heroku, click the Deploy to Heroku button. (You will still need to configure a few simple things, so skip to [Deployment](#deployment).)
+If you would like to skip these steps and just deploy the finished code to a managed service, click the Deploy to Railway/Render/Heroku button. (You will still need to configure a few simple things, so skip to [Deployment](#deployment).)
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/zoom/videosdk-auth-endpoint-sample)
+| Railway | Render | Heroku |
+|:-:|:-:|:-:|
+| [![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/dO2hTU?referralCode=HTPdHX) | [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/zoom/videosdk-auth-endpoint-sample) | [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/zoom/videosdk-auth-endpoint-sample) | 
+
+> Note: Both Railway and Render have free tiers, but Heroku requires a credit card to deploy.
 
 ## Installation
 
@@ -87,26 +91,30 @@ client.join(
 
 ## Deployment
 
-### Heroku (button)
+### Deploy to a Managed Service
 
-1. After clicking the "Deploy to Heroku" button, enter a name for your app (or leave it blank to have a name generated for you), and insert your [Zoom Video SDK credentials](https://developers.zoom.us/docs/video-sdk/get-credentials/):
+1. After clicking the "Deploy to <Provider\>" button, enter a name for your app (or leave it blank to have a name generated for you), and insert your [Zoom Video SDK credentials](https://developers.zoom.us/docs/video-sdk/get-credentials/):
 
    - `ZOOM_VIDEO_SDK_KEY` (Your Zoom Video SDK Key, found on your Zoom Video SDK App's Credentials page)
    - `ZOOM_VIDEO_SDK_SECRET` (Your Zoom Video SDK Secret, found on your Zoom Video SDK App's Credentials page)
 
 1. Then click "Deploy App".
 
-1. Use your Heroku URL as your Video SDK Auth Endpoint.
+1. Use your URL as your Video SDK Auth Endpoint.
 
-   Example: `https://abc123.herokuapp.com/`
+   Example: `https://abc123.provider.com/`
 
-### Heroku (CLI)
+```bash
+$ curl <YOU_URL> -X POST -d '{  "sessionName": "Cool Cars",  "role": "1",  "sessionKey": "session123",  "userIdentity": "user123"}' -H "Content-Type: application/json"
+```
+
+<!-- ### Heroku (CLI)
 
 1. If you cloned this repository, you may use the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) to deploy your server. Remember to [set your config vars (envoirnment variables)](https://devcenter.heroku.com/articles/config-vars).
 
 1. Use your Heroku URL as your Video SDK Auth Endpoint.
 
-   Example: `https://abc123.herokuapp.com/`
+   Example: `https://abc123.herokuapp.com/` -->
    
 ### Other Server Hosting
 

@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: Zoom Video SDK Auth Sample
+    runtime: node
+    buildCommand: npm install
+    startCommand: npm start
+    repo: https://github.com/zoom/videosdk-auth-endpoint-sample
+    rootDir: .
+    plan: free
+    envVars:
+      - key: ZOOM_VIDEO_SDK_KEY
+        sync: false
+      - key: ZOOM_VIDEO_SDK_SECRET
+        sync: false
