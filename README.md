@@ -108,6 +108,46 @@ client.join(
 $ curl <YOU_URL> -X POST -d '{  "sessionName": "Cool Cars",  "role": "1",  "sessionKey": "session123",  "userIdentity": "user123"}' -H "Content-Type: application/json"
 ```
 
+### Deploy with Docker
+
+If you prefer to run the application in a Docker container, follow the steps below.
+1. Build the Docker Image: In your terminal, run the following command to build the Docker image:
+
+```
+   docker build -t zoom-videosdk-auth .
+```
+
+2. Run the Docker Container: Once the image is built, you can run the container while passing in the required environment variables for the Zoom Video SDK credentials:
+
+```bash
+$ docker run -d -p 4000:4000 \
+   -e ZOOM_VIDEO_SDK_KEY=your_zoom_videosdk_key \
+   -e ZOOM_VIDEO_SDK_SECRET=your_zoom_videosdk_secret \
+   --name zoom-videosdk-auth zoom-videosdk-auth
+```
+
+> This will start the app on port 4000.
+
+3. Make Requests to the Endpoint: Once the container is running, you can make a POST request to `<YOU_URL>` with the required parameters:
+
+#### Example Request:
+
+```bash
+$ curl <YOU_URL> -X POST -d '{  "sessionName": "Cool Cars",  "role": "1",  "sessionKey": "session123",  "userIdentity": "user123"}' -H "Content-Type: application/json"
+```
+Stopping the Docker Container: To stop the Docker container, run:
+
+```bash
+$ docker stop zoom-videosdk-auth
+```
+Removing the Docker Container: To remove the container:
+
+```bash
+$ docker rm zoom-videosdk-auth
+```
+
+Now you can generate your Video SDK JWT.
+
 <!-- ### Heroku (CLI)
 
 1. If you cloned this repository, you may use the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) to deploy your server. Remember to [set your config vars (envoirnment variables)](https://devcenter.heroku.com/articles/config-vars).
