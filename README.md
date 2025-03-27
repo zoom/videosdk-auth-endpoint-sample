@@ -49,7 +49,15 @@ Make a POST request to `http://localhost:4000` (or your deployed url) with the f
 | `cloudRecordingOption`   | `number` | No        | - Must equal `0` or `1`                                               |
 | `cloudRecordingElection` | `number` | No        | - Must equal `0` or `1`                                               |
 | `telemetryTrackingId`    | `string` | No        | N/A                                                                   |
+| `videoWebRtcMode`        | `number` | No        | - Must equal `0` or `1`                                               |
+| `audioCompatibleMode`    | `number` | No        | - **Deprecated**: See below. <br> - Must equal `0` or `1`             |
+| `audioWebRtcMode`        | `number` | No        | - Must equal `0` or `1`                                               |
 
+### Audio Compatible Mode vs Audio WebRTC Mode
+
+Video SDK previously allowed a JWT claim `audioCompatibleMode`. Zoom has deprecated this claim in favor of `audioWebRtcMode`. Update your code to use `audioWebRtcMode`, if applicable.
+
+During the deprecation phase, both `audioCompatibleMode` and `audioWebRtcMode` may be used, with `audioWebRtcMode` taking priority, if defined. `audioCompatibleMode` will be removed in the future.
 
 ### Example Request
 
