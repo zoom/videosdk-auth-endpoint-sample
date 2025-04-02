@@ -30,15 +30,23 @@ const validator = {
   geoRegions: matchesStringArray(['AU', 'BR', 'CA', 'CN', 'DE', 'HK', 'IN', 'JP', 'MX', 'NL', 'SG', 'US']),
   cloudRecordingOption: inNumberArray([0, 1]),
   cloudRecordingElection: inNumberArray([0, 1]),
-  audioCompatibleMode: inNumberArray([0, 1])
+  videoWebRtcMode: inNumberArray([0, 1]),
+  // Deprecated: See README for more information. Will be removed in the future.
+  audioCompatibleMode: inNumberArray([0, 1]),
+  audioWebRtcMode: inNumberArray([0, 1])
 }
 
 const coerceRequestBody = (body) => ({
   ...body,
-  ...['role', 'expirationSeconds', 'cloudRecordingOption', 'cloudRecordingElection', 'audioCompatibleMode'].reduce(
-    (acc, cur) => ({ ...acc, [cur]: typeof body[cur] === 'string' ? parseInt(body[cur]) : body[cur] }),
-    {}
-  )
+  ...[
+    'role',
+    'expirationSeconds',
+    'cloudRecordingOption',
+    'cloudRecordingElection',
+    'videoWebRtcMode',
+    'audioCompatibleMode',
+    'audioWebRtcMode'
+  ].reduce((acc, cur) => ({ ...acc, [cur]: typeof body[cur] === 'string' ? parseInt(body[cur]) : body[cur] }), {})
 })
 
 const joinGeoRegions = (geoRegions) => toStringArray(geoRegions)?.join(',')
@@ -60,7 +68,10 @@ app.post('/', (req, res) => {
     geoRegions,
     cloudRecordingOption,
     cloudRecordingElection,
-    audioCompatibleMode
+    telemetryTrackingId,
+    videoWebRtcMode,
+    audioCompatibleMode,
+    audioWebRtcMode
   } = requestBody
 
   const iat = Math.floor(Date.now() / 1000)
@@ -79,7 +90,9 @@ app.post('/', (req, res) => {
     geo_regions: joinGeoRegions(geoRegions),
     cloud_recording_option: cloudRecordingOption,
     cloud_recording_election: cloudRecordingElection,
-    audio_compatible_mode: audioCompatibleMode
+    telemetry_tracking_id: telemetryTrackingId,
+    video_webrtc_mode: videoWebRtcMode,
+    audio_webrtc_mode: audioWebRtcMode ?? audioCompatibleMode
   }
 
   const sHeader = JSON.stringify(oHeader)
