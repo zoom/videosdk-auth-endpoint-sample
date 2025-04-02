@@ -54,7 +54,7 @@ Make a POST request to `http://localhost:4000` (or your deployed url) with the f
 
 ### Audio Compatible Mode vs Audio WebRTC Mode
 
-`audioCompatibleMode` has been replaced with `audioWebRtcMode`, which is deprecated. Update your code to use `audioWebRtcMode` going forward.
+`audioWebRtcMode` replaces `audioCompatibleMode`, which is now deprecated. Update your code to use `audioWebRtcMode` going forward.
 
 ### Example Request
 
